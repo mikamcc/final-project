@@ -1,0 +1,19 @@
+<h1>Inspirational Quotes</h1>
+<div>
+  <ul>
+  <% @quotations.each do |quotation| %>
+  <li>
+    <% quotations_path(quotation.id) %>
+      <%= quotation.content %>
+  <% end %>
+</ul>
+<br>
+
+<h1>Background images</h1>
+
+  <% @quotations.each do |quotation| %>
+    <% quotations_path(quotation.id) %>
+      <%= image_tag quotation.image %>
+  <% end %>
+
+</div>

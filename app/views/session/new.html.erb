@@ -1,0 +1,26 @@
+<div class="login-page">
+
+<h2 class="login-title">Login</h2>
+
+<% if flash[:error] %>
+<br>
+<strong><%= flash[:error] %></strong>
+<br>
+<% end %>
+
+<div id="login" class="form-group" >
+<%= form_tag login_path do %>
+<span>
+<%= label_tag :email%>
+<%= email_field_tag :email, nil , class:"form-control", placeholder:"Enter email" %>
+</span>
+ <span>
+<%= label_tag :password %>
+<%= password_field_tag :password, nil , class:"form-control", placeholder:"Password" %>
+</span>
+<br>
+<%= submit_tag 'Login' , class: "btn btn-outline-info"%>
+<% end %>
+</div>
+</div>
+<!-- whole page -->

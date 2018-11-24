@@ -1,0 +1,33 @@
+<script>
+const searchFlickr = queryText => {
+    console.log(`searchFlickr(): ${queryText}`, pageCount);
+
+    const BASE_URL = 'https://api.flickr.com/services/rest/';
+
+    // $.getJSON lets you give an object as an optional second arg, whose key-value pairs
+    // will be turned into an equivalent querystring and appended to the URL
+    $.getJSON(BASE_URL, {
+      api_key: '2f5ac274ecfac5a455f38745704ad084',
+      method: 'flickr.photos.search',
+      format: 'json',
+      nojsoncallback: 1,
+      text: queryText,
+      page: 1
+    })
+    .done( displaySearchResults )  // Register another function to handle the successful response
+    .fail( console.warn );
+
+  }; // searchFlickr()
+
+
+
+
+</script>
+<h2>Step 1: Select your background image</h2>
+
+<form>
+  
+</form>
+
+<h2>Step 2: Enter your favorite quotation</h2>
+<%= render partial: 'form' %>
