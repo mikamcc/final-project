@@ -28,4 +28,13 @@ class QuotationsController < ApplicationController
 
   def destroy
   end
+
+  private
+    def quotation_params
+      # This method ensures that the 'artist' key is set in the params hash, and then
+      # makes sure only the permitted columns are taken from the form (and saved to the database)
+      params.require(:quotation).permit( :content )
+    end
+
+
 end
