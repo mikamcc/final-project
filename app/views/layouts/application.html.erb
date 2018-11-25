@@ -16,9 +16,9 @@
       <%= link_to 'Home', quotations_path, class: "nav-link" %>
       |
       <% if @current_user.present? %>
-      Welcome, <%= @current_user.name %>
+      <%= link_to 'Welcome ' +  @current_user.name, user_path(@current_user), class: "nav-link"%>
       |
-      <%= link_to 'Create New Quotations'%>
+      <%= link_to 'Create New Quotations',new_quotation_path%>
       |
       <%= link_to 'See All Quotations', quotations_path %>
       |

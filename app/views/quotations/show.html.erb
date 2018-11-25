@@ -1,2 +1,10 @@
 <h1>Quotations#show</h1>
-<p>Find me in app/views/quotations/show.html.erb</p>
+
+<div class="restaurant_show">
+  <div>
+    <% if @quotation.user == @current_user %>
+    <%= link_to 'Edit This Quote', edit_quotation_path(@quotation) %>
+    |
+    <%= link_to 'Delete This QUote', user_path(@current_user), method: 'delete' %>
+    <% end %>
+  </div>
