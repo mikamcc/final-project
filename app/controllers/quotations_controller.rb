@@ -26,6 +26,7 @@ class QuotationsController < ApplicationController
   end
 
   def show
+
     @quotation = Quotation.find params[:id]
     @text = @quotation.content
     @text = @text.gsub(/\n/, "<br>").html_safe

@@ -8,9 +8,7 @@
 
 <%= form_for @quotation, html: {multipart: true} do |f| %>
   <%= f.text_area :content, id: 'content' %>
-
   <%= f.hidden_field :image, id: 'image_url' %>
 
-<!-- <button>Search Flickr</button> -->
 <%= f.submit %>
 <% end %>
