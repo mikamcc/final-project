@@ -7,10 +7,8 @@
 <% end %>
 
 <%= form_for @quotation, html: {multipart: true} do |f| %>
-<fieldset>
-  <%= f.label :content %>
-  <%= f.text_field :content %>
-</fieldset>
+  <%= f.text_area :content, id: 'content' %>
 
-<%= f.submit %>
+<!-- <button>Search Flickr</button> -->
+<!-- <%= f.submit %> -->
 <% end %>

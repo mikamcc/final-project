@@ -7,77 +7,90 @@
       </form>
       <div id="results"></div>
 
-      <script>
 
-      $('#searchForm').on('submit', () => {
-        console.log('submitted');
-        const query = $('#searchText').val()
-        searchFlickr( query );
-        return false;
-      });
-
-      const searchFlickr = queryText => {
-
-        const BASE_URL = 'https://api.flickr.com/services/rest/';
-
-        // $.getJSON lets you give an object as an optional second arg, whose key-value pairs
-        // will be turned into an equivalent querystring and appended to the URL
-        $.getJSON(BASE_URL, {
-          api_key: '2f5ac274ecfac5a455f38745704ad084',
-          method: 'flickr.photos.search',
-          format: 'json',
-          nojsoncallback: 1,
-          text: queryText,
-          page: 1
-        })
-        .done( displaySearchResults )  // Register another function to handle the successful response
-        .fail( console.warn );
-
-      }; // searchFlickr()
-
-      const displaySearchResults = response => {
-        // console.log( response );
-
-        $('#results').empty();
-
-        response.photos.photo.forEach( foto => {
-
-            const thumbnailURL = generateImageURL( foto );
-            const hoverImageURL = generateImageURL( foto, 'n' )
-            $('<img>')
-            .attr('src', thumbnailURL)
-            .on('click', function(){
-              // displayFullscreenImage( foto );
-              console.log('clicked!!', this);
-              $('img.selected').removeClass('selected');
-              $(this).addClass('selected');
-            })
-            .hover(
-              function(){
-                $(this).attr('src', hoverImageURL);
-              },
-              function(){
-                $(this).attr('src', thumbnailURL);
-              }
-            )
-            .appendTo("#results");
-
-          }); // forEach
-      };
-
-      const generateImageURL = (photo, size='s') => {
-          return `https://farm${photo.farm}.staticflickr.com/${photo.server}/${photo.id}_${photo.secret}_${size}.jpg`; //plug in size
-        };
-
-      </script>
   </div>
 
   <div class="grid-item">
     Preview Page
+    <div id="preview">
+      <img />
+      <div id="quote-text"> </div>
+    </div>
   </div>
 
   <div class="grid-item">
     <h2>Step 2: Enter your favorite quotation</h2>
     <%= render partial: 'form' %>
   </div>
-</div> <!--whole page div>
+</div> <!--whole page div-->
+
+
+  <script>
+
+  $('#content').on('keypress', function(){
+    const content = $(this).val();
+    $('#quote-text').html( content );
+  })
+
+  $('#searchForm').on('submit', () => {
+    console.log('submitted');
+    const query = $('#searchText').val()
+    searchFlickr( query );
+    return false;
+  });
+
+  const searchFlickr = queryText => {
+
+    const BASE_URL = 'https://api.flickr.com/services/rest/';
+
+    // $.getJSON lets you give an object as an optional second arg, whose key-value pairs
+    // will be turned into an equivalent querystring and appended to the URL
+    $.getJSON(BASE_URL, {
+      api_key: '2f5ac274ecfac5a455f38745704ad084',
+      method: 'flickr.photos.search',
+      format: 'json',
+      nojsoncallback: 1,
+      text: queryText,
+      page: 1
+    })
+    .done( displaySearchResults )  // Register another function to handle the successful response
+    .fail( console.warn );
+
+  }; // searchFlickr()
+
+  const displaySearchResults = response => {
+    // console.log( response );
+
+    $('#results').empty();
+
+    response.photos.photo.forEach( foto => {
+
+        const thumbnailURL = generateImageURL( foto );
+        $('<img>')
+        .attr('src', thumbnailURL)
+        .on('click', function(){
+          // displayFullscreenImage( foto );
+          console.log('clicked!!', this);
+          $('img.selected').removeClass('selected');
+          $(this).addClass('selected');
+          const hoverImageURL = generateImageURL( foto, 'c' );
+          $('#preview img').attr('src', hoverImageURL);
+        })
+        // .hover(
+        //   function(){
+        //     $(this).attr('src', hoverImageURL);
+        //   },
+        //   function(){
+        //     $(this).attr('src', thumbnailURL);
+        //   }
+        // )
+        .appendTo("#results");
+
+      }); // forEach
+  };
+
+  const generateImageURL = (photo, size='s') => {
+      return `https://farm${photo.farm}.staticflickr.com/${photo.server}/${photo.id}_${photo.secret}_${size}.jpg`; //plug in size
+    };
+
+  </script>
