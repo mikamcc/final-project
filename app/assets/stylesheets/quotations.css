@@ -2,3 +2,21 @@
 img.selected{
   border: 2px solid lightgreen;
 }
+
+.container {
+  display: grid;
+  padding: 20px;
+  background: #fff;
+  grid-template-columns: 2fr 1fr;
+  grid-template-rows: 8fr 3fr;
+  grid-column-gap: 10px;
+  grid-row-gap: 10px;
+}
+.grid-item {
+  background: pink;
+  padding: 30px;
+}
+
+.pig {
+  grid-column: span 2;
+}

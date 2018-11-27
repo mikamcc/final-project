@@ -30,9 +30,13 @@ class UsersController < ApplicationController
 
   # UPDATE ################################################
   def edit
+    @quotation = Quotation.find params[:id]
   end
 
   def update
+    unless @quotation.user == @current_user
+       return
+     end
   end
 
 
