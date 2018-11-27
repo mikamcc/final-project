@@ -4,7 +4,17 @@ class QuotationsController < ApplicationController
   end
 
   def create
-    @quotation = Quotation.new(quotation_params)
+    quotation = Quotation.new(quotation_params)
+    quotation.user = @current_user
+    quotation.save
+
+    if quotation.persisted?
+      redirect_to( quotation_path(quotation.id)  )
+    else
+      flash[:errors] = quotation.errors.full_messages
+      render :new
+    end
+
   end
 
 
@@ -16,7 +26,11 @@ class QuotationsController < ApplicationController
   end
 
   def show
-    @quotations = Quotation.find params[:id]
+    @quotation = Quotation.find params[:id]
+    @text = @quotation.content
+    @text = @text.gsub(/\n/, "<br>").html_safe
+    @text = @text.gsub(/ /, "&nbsp;").html_safe
+
   end
 
   #UPDATE ############################################
@@ -33,7 +47,7 @@ class QuotationsController < ApplicationController
     def quotation_params
       # This method ensures that the 'artist' key is set in the params hash, and then
       # makes sure only the permitted columns are taken from the form (and saved to the database)
-      params.require(:quotation).permit( :content )
+      params.require(:quotation).permit( :content, :image )
     end
 
 
