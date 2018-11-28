@@ -9,6 +9,8 @@
 <%= form_for @quotation, html: {multipart: true} do |f| %>
   <%= f.text_area :content, id: 'content' %>
   <%= f.hidden_field :image, id: 'image_url' %>
+  <%= f.hidden_field :font_size, id: 'form_font_size' %>
+  <%= f.hidden_field :font_colour, id: 'form_font_colour' %>
 
 <%= f.submit %>
 <% end %>

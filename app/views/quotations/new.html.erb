@@ -2,7 +2,7 @@
   <div class="grid-item pig">
       <h2>Step 1: Select your background image</h2>
       <form id="searchForm">
-        <input type="text" id="searchText" value="coral">
+        <input type="text" id="searchText" value="">
         <button>Search Flickr</button>
       </form>
       <div id="results"></div>
@@ -23,36 +23,53 @@
 
     <p>Choose your font color:</p>
       <div>
-          <input type="color" id="head" name="font" value="#e66465">
-          <label for="head">Font</label>
+          <input type="color" id="colour" name="font" value="#e66465">
+          <label for="head">Font Color</label>
       </div>
     <p>Choose your font size:</p>
-    <select>
-      <option value="font-size">12</option>
-      <option value="font-size">16</option>
-      <option value="font-size">20</option>
-      <option value="font-size">24</option>
-      <option value="font-size">28</option>
-      <option value="font-size">32</option>
-      <option value="font-size">36</option>
-      <option value="font-size">40</option>
-      <option value="font-size">42</option>
-      <option value="font-size">44</option>
-      <option value="font-size">46</option>
-      <option value="font-size">48</option>
-      <option value="font-size">50</option>
-      <option value="font-size">52</option>
-      <option value="font-size">54</option>
-      <option value="font-size">56</option>
-      <option value="font-size">58</option>
-      <option value="font-size">60</option>
+    <select id="font-size">
+      <option value="12">12</option>
+      <option value="16">16</option>
+      <option value="20">20</option>
+      <option value="24">24</option>
+      <option value="28">28</option>
+      <option value="32">32</option>
+      <option value="36">36</option>
+      <option value="40">40</option>
+      <option value="42">42</option>
+      <option value="44">44</option>
+      <option value="46">46</option>
+      <option value="48">48</option>
+      <option value="50">50</option>
+      <option value="52">52</option>
+      <option value="54">54</option>
+      <option value="56">56</option>
+      <option value="58">58</option>
+      <option value="60">60</option>
     </select>
-
-
   </div>
 </div>
 
   <script>
+
+    $('#colour').on('change', function(){
+      console.log('font-colour changed!');
+      const newColour = $(this).val();
+      $('#quote-text').css('color', newColour);
+      $('#form_font_colour').val( newColour );
+      console.log( $('#form_font_colour').val() );
+    });
+
+      
+
+
+    $('#font-size').on('change', function(){
+      console.log('font-size changed!');
+      const newSize = $(this).val();
+      $('#quote-text').css('font-size', newSize + 'pt');
+      $('#form_font_size').val( newSize );
+    });
+
     $('#content').on('input propertychange', function(){
       let content = $(this).val();
       content = content.replace(/\n/g, '<br>')
@@ -104,7 +121,8 @@
             $(this).addClass('selected');
             const hoverImageURL = generateImageURL( foto, 'c' );
             $('#preview img').attr('src', hoverImageURL);
-            $('#image_url').val( hoverImageURL );
+
+            $('#image_url').val( hoverImageURL );  // save chosen image URL to hidden form field (so it saves to DB)
             console.log( $('#image_url').val() );
           })
           // .hover(
@@ -124,7 +142,3 @@
         return `https://farm${photo.farm}.staticflickr.com/${photo.server}/${photo.id}_${photo.secret}_${size}.jpg`; //plug in size
       };
   </script>
-
-
-<!-- $('quote-text').css('color', ????)
-$('quote-text').css('font-size', ????) -->

@@ -1,12 +1,20 @@
 <h1>Inspirational Quotes</h1>
 <div>
 
-
-<h1>Background images</h1>
-<div clas="all-images">
-  <% @quotations.each do |quotation| %>
-    <%= link_to quotation_path(quotation.id) do %>
-      <%= image_tag quotation.image %>
+  <h1>Background images</h1>
+  <div clas="all-images">
+    <% @quotations.each do |quotation| %>
+      <%= link_to quotation_path(quotation.id) do %>
+        <%= image_tag quotation.image %>
+      <% end %>
     <% end %>
-  <% end %>
+  </div>
+
+
+  <div id="show">
+    <img src="<%= @quotation.image%>">
+      <div id="quote-text">
+        <%= @text %>
+      </div>
+    </div>
 </div>
