@@ -4,14 +4,14 @@ class QuotationsController < ApplicationController
   end
 
   def create
-    quotation = Quotation.new(quotation_params)
-    quotation.user = @current_user
-    quotation.save
+    @quotation = Quotation.new(quotation_params)
+    @quotation.user = @current_user
+    @quotation.save
 
-    if quotation.persisted?
-      redirect_to( quotation_path(quotation.id)  )
+    if @quotation.persisted?
+      redirect_to( quotation_path(@quotation.id)  )
     else
-      flash[:errors] = quotation.errors.full_messages
+      flash[:errors] = @quotation.errors.full_messages
       render :new
     end
 

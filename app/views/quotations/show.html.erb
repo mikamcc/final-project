@@ -1,5 +1,15 @@
 <h1>Quotations#show</h1>
 
+<div>
+    <% if @quotation.user == @current_user %>
+    <%= link_to 'Edit This Quotation', edit_quotation_path(@quotation) %>
+    |
+    <%= link_to 'Delete This Quotation', quotation_path(@quotation), method: 'delete' %>
+    <% end %>
+  </div>
+
+
+
 <div id="show">
   <img src="<%= @quotation.image %>">
   <div id="quote-text">
