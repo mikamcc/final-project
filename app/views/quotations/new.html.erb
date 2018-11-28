@@ -12,7 +12,7 @@
     Preview Page
     <div id="preview">
       <img />
-      <div id="quote-text"> </div>
+      <div class="quote-text"> </div>
     </div>
   </div>
 
@@ -55,18 +55,18 @@
     $('#colour').on('change', function(){
       console.log('font-colour changed!');
       const newColour = $(this).val();
-      $('#quote-text').css('color', newColour);
+      $('.quote-text').css('color', newColour);
       $('#form_font_colour').val( newColour );
       console.log( $('#form_font_colour').val() );
     });
 
-      
+
 
 
     $('#font-size').on('change', function(){
       console.log('font-size changed!');
       const newSize = $(this).val();
-      $('#quote-text').css('font-size', newSize + 'pt');
+      $('.quote-text').css('font-size', newSize + 'pt');
       $('#form_font_size').val( newSize );
     });
 
@@ -75,7 +75,7 @@
       content = content.replace(/\n/g, '<br>')
       content = content.replace(/ /g, '&nbsp;')
       console.log( content );
-      $('#quote-text').html( content );
+      $('.quote-text').html( content );
     })
 
     $('#searchForm').on('submit', () => {

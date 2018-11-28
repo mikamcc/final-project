@@ -8,9 +8,10 @@
     <% end %>
   </div>
 
-<style>
-#quote-text{
-  font-size: <%= @quotation.font_size %>pt !important;
-  color: <%= @quotation.font_colour %> !important;
-}
-</style>
+<div class="show">
+  <img src="<%= @quotation.image %>">
+    <div class="quote-text" style="font-size: <%= @quotation.font_size %> !important; color: <%= @quotation.font_colour %> !important;">
+      <%= @text %>
+    </div>
+  </div>
+</div>

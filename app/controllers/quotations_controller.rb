@@ -32,9 +32,9 @@ class QuotationsController < ApplicationController
 
     @quotation = Quotation.find params[:id]
     @text = @quotation.content
-    @text = @text.gsub(/\n/, "<br>").html_safe
+    @text = @text.gsub(/\r\n/, "<br>").html_safe
     @text = @text.gsub(/ /, "&nbsp;").html_safe
-
+    puts "TEXT: ", @text
   end
 
   #UPDATE ############################################
