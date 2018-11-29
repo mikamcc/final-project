@@ -12,6 +12,9 @@
 
 ActiveRecord::Schema.define(version: 2018_11_29_012437) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "quotations", force: :cascade do |t|
     t.integer "user_id"
     t.text "content"
