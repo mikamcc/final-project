@@ -1,15 +1,21 @@
 <h2 class="user-show"><%= @user.name %>'s Page</h2>
 
+
+<h4>Quotes you liked</h4>
+<% @user.liked_quotations.each do |liked| %>
+  <p><%= link_to liked.content, quotation_path(liked.id) %></p>
+<% end %>
+
+
 <h4>Quotes you created</h4>
 
-
 <% @user.quotations.each do |quotation| %>
-<div class="show" id="q<%= quotation.id %>">
+  <div class="show" id="q<%= quotation.id %>">
     <%= link_to quotation_path(quotation.id) do %>
-    <img src="<%= quotation.image%>">
+      <img src="<%= quotation.image%>">
       <div class="quote-text" style="font-size: <%= quotation.font_size %> !important; color: <%= quotation.font_colour %> !important;">
         <%= quotation.content.gsub(/\r\n/, "<br>").gsub(/ /, "&nbsp;").html_safe %>
       </div>
-    </div>
     <% end %>
-    <% end %>
+  </div>
+  <% end %>

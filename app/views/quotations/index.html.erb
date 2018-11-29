@@ -10,9 +10,8 @@
               <%= quotation.content.gsub(/\r\n/, "<br>").gsub(/ /, "&nbsp;").html_safe %>
             </div>
           <% end %>
-          <br>
+          <%= button_to "Like", like_path(quotation.id), class: 'likeButton'  %>
         </div>
-        <%= button_to "like", like_path(quotation.id)  %>
     <% end %>
   </div>
 </div>

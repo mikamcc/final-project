@@ -1,8 +1,13 @@
 class QuotationsController < ApplicationController
 
   def like
-    puts params[:id]
-    @current_user.liked_quotations << Quotation.find( params[:id] )
+    quotation = Quotation.find( params[:id] )
+
+    # avoid duplicates
+    unless @current_user.liked_quotations.include? quotation
+      @current_user.liked_quotations << quotation
+    end
+
     redirect_to user_path(@current_user)
   end
 

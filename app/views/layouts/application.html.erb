@@ -12,23 +12,29 @@
 
   <body>
     <h1 class="title">Inspirational Quotes</h1>
-    <nav>
-      <%= link_to 'Home', quotations_path, class: "nav-link" %>
-      |
+    <div class="topnav">
+    <%= link_to 'Home', quotations_path %>
       <% if @current_user.present? %>
-      <%= link_to 'Welcome ' +  @current_user.name, user_path(@current_user), class: "nav-link"%>
+      <%= link_to 'Welcome ' +  @current_user.name, user_path(@current_user), class: "active"%>
       |
-      <%= link_to 'Create New Quotations',new_quotation_path%>
+      <%= link_to 'Create New Quotations',new_quotation_path, class: "middle"%>
       |
-      <%= link_to 'See All Quotations', quotations_path %>
+      <%= link_to 'See All Quotations', quotations_path, class: "middle" %>
       |
+      <div class="topnav-right">
       <%= link_to 'Logout', login_path, method: 'delete' %>
-    <% else %>
+      <% else %>
+      <div class="topnav-right-right">
       <%= link_to 'Login', login_path %>
       |
       <%= link_to 'Sign up', new_user_path %>
-    <% end %>
-  </nav>
+      <% end %>
+      </div>
+      </div>
+      </div>
+  </div>
+
+
   <%= yield %>
 
   </body>
