@@ -7,7 +7,22 @@ body{
   font-family: 'Nunito Sans', sans-serif;
 }
 
-/* .show {
+  h2 {
   text-align: center;
-  margin: 0 auto;
-} */
+  margin: auto 0;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  font-size: 30px;
+
+}
+
+
+.user-show {
+  font-size: 50px;
+  margin-bottom: 30px;
+  margin-top: 20px;
+}
+
+#liked-list{
+  text-align: center;
+}

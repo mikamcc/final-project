@@ -58,9 +58,7 @@ img.selected{
   text-align: center;
 }
 
-/* .all-images {
-  background-color: yellow;
-} */
+
 
 .all-images {
   text-align: center;
@@ -76,4 +74,9 @@ img.selected{
   position: absolute;
   bottom: 10px;
   right: 4px;
+}
+
+.show {
+  text-align: center;
+  margin: 0 auto;
 }
