@@ -26,3 +26,13 @@ body{
 #liked-list{
   text-align: center;
 }
+
+.all-pics {
+  text-align: center;
+  margin: 0 auto;
+}
+
+.pic {
+  width: 55vw;
+  height: 70vh;
+}
