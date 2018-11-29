@@ -1,4 +1,12 @@
 class QuotationsController < ApplicationController
+
+  def like
+    puts params[:id]
+    @current_user.liked_quotations << Quotation.find( params[:id] )
+    redirect_to user_path(@current_user)
+  end
+
+
   def new
     @quotation = Quotation.new
   end

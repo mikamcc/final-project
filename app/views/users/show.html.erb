@@ -4,5 +4,12 @@
 
 
 <% @user.quotations.each do |quotation| %>
-  <%= image_tag quotation.image %>
-  <% end %>
+<div class="show" id="q<%= quotation.id %>">
+    <%= link_to quotation_path(quotation.id) do %>
+    <img src="<%= quotation.image%>">
+      <div class="quote-text" style="font-size: <%= quotation.font_size %> !important; color: <%= quotation.font_colour %> !important;">
+        <%= quotation.content.gsub(/\r\n/, "<br>").gsub(/ /, "&nbsp;").html_safe %>
+      </div>
+    </div>
+    <% end %>
+    <% end %>

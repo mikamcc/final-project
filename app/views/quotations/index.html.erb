@@ -1,22 +1,18 @@
-<h1>Inspirational Quotes</h1>
+<h1>All Quotes</h1>
 <div>
 
-  <h1>Background images</h1>
-  <div clas="all-images">
+  <div class="all-images">
     <% @quotations.each do |quotation| %>
-      <%= link_to quotation_path(quotation.id) do %>
-        <%#= image_tag quotation.image %>
-
-
-          <div class="show" id="q<%= quotation.id %>">
-            <img src="<%= quotation.image%>">
-              <div class="quote-text" style="font-size: <%= quotation.font_size %> !important; color: <%= quotation.font_colour %> !important;">
-                <%= quotation.content.gsub(/\r\n/, "<br>").gsub(/ /, "&nbsp;").html_safe %>
-              </div>
+        <div class="show" id="q<%= quotation.id %>">
+          <%= link_to quotation_path(quotation.id) do %>
+            <img class="photo" src="<%= quotation.image%>">
+            <div class="quote-text" style="font-size: <%= quotation.font_size %> !important; color: <%= quotation.font_colour %> !important;">
+              <%= quotation.content.gsub(/\r\n/, "<br>").gsub(/ /, "&nbsp;").html_safe %>
             </div>
+          <% end %>
+          <br>
         </div>
-
-
-      <% end %>
+        <%= button_to "like", like_path(quotation.id)  %>
     <% end %>
   </div>
+</div>
