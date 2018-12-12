@@ -1,8 +1,8 @@
 
 <div>
     <% if @quotation.user == @current_user %>
-    <%= link_to 'Edit This Quotation', edit_quotation_path(@quotation) %>
-    |
+    <!-- <%= link_to 'Edit This Quotation', edit_quotation_path(@quotation) %>
+    | -->
     <%= link_to 'Delete This Quotation', quotation_path(@quotation), method: 'delete' %>
     <% end %>
   </div>

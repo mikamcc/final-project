@@ -5,17 +5,9 @@ body{
   /* font-family: 'Raleway', sans-serif; */
   font-family: 'Raleway', sans-serif;
   font-family: 'Nunito Sans', sans-serif;
-  background-image: url('https://images.unsplash.com/photo-1490735891913-40897cdaafd1?ixlib=rb-0.3.5&s=0ccfe241ba3df891ce3ffd331cb0ea33&auto=format&fit=crop&w=1050&q=80');
-  background-size: auto;
   height: 100%;
   width: 100%;
 }
-
-
-
-
-
-
 
   h2 {
   text-align: center;
@@ -45,4 +37,9 @@ body{
 .pic {
   width: 55vw;
   height: 70vh;
+}
+
+#title {
+  text-align: center;
+  font-size: 40px;
 }
